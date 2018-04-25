@@ -6,14 +6,13 @@ let primaryColour = '#fff';
 let primaryStyle = {
   color: primaryColour
 }
-let aggregateStyle = {
-  width: 40%,
+let inlineBlock = {
   display: `inline-block`
 }
 class Aggregate extends Component {
   render(){
     return(
-      <div style={{width: "40%", display: `inline-block`}}>
+      <div style={{width: "40%",...inlineBlock}}>
       <h2 style={primaryStyle}> Numbers</h2>
       </div>
       );
