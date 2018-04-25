@@ -6,6 +6,10 @@ let primaryColour = '#fff';
 let primaryStyle = {
   color: primaryColour
 }
+let aggregateStyle = {
+  width: 40%,
+  display: `inline-block`
+}
 class Aggregate extends Component {
   render(){
     return(
@@ -32,15 +36,15 @@ class Playlist extends Component {
   render(){
     return(
       <div style={{display: `inline-block`, margin: `40px`}}>
-        <img src="" alt=""/>
-        <h3 style={{...primaryStyle}}>Playlist Title</h3>
-        <ul style={{...primaryStyle}}>
-          <li>Song 1</li>
-          <li>Song 2</li>
-          <li>Song 3</li>
-        </ul>
+      <img src="" alt=""/>
+      <h3 style={{...primaryStyle}}>Playlist Title</h3>
+      <ul style={{...primaryStyle}}>
+      <li>Song 1</li>
+      <li>Song 2</li>
+      <li>Song 3</li>
+      </ul>
       </div>
-     );
+      );
   }
 }
 
