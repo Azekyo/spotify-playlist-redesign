@@ -43,7 +43,7 @@ let fakeServerData = {
     {
       name: 'Hip Hoppening',
       songs: [
-      {songName: 'Karl drogo sighs', songLength: 196},
+      {songName: 'Karl Drogo sighs', songLength: 196},
       {songName: 'Pride', songLength: 275}, 
       {songName: 'Boredom', songLength: 237}, 
       {songName: 'OG Kush Diet', songLength: 268}
