@@ -56,7 +56,7 @@ class PlaylistCounter extends Component {
   render(){
     return(
       <div style={{width: "40%",...inlineBlock}}>
-      <h2 style={primaryStyle}> {this.props.playlists.length} text</h2>
+      <h2 style={primaryStyle}> {this.props.playlists.length} lists</h2>
       </div>
       );
   }
@@ -83,8 +83,12 @@ class Filter extends Component {
     return(
       <div>
       <img/>
-      <label for="filter" style={{...primaryStyle, 'font-size': `20px`, 'margin-right': `10px`}}>Filter</label>
-      <input type='text' id='filter'/>
+      <label for = "filter" style = {{...primaryStyle, 'font-size': `20px`, 'margin-right': `10px`}}>Filter</label>
+      <input type = 'text' 
+      id = 'filter' 
+      placeholder = 'filter by playlist title'
+      onChange = {event => this.props.onInput(event.target.value)}
+      />
       </div>
       );
   }
@@ -97,9 +101,9 @@ class Playlist extends Component {
       <img src="" alt=""/>
       <h3 style={{...primaryStyle}}>{this.props.playlist.name}</h3>
       <ul style={{...primaryStyle}}>
-        {this.props.playlist.songs.map(songs => 
-          <li>{songs.songName}</li>
-          )}
+      {this.props.playlist.songs.map(songs => 
+        <li>{songs.songName}</li>
+        )}
       </ul>
       </div>
       );
@@ -107,8 +111,15 @@ class Playlist extends Component {
 }
 
 class App extends Component {
-  componentWillMount(){
-    this.setState({serverData: fakeServerData});
+  // componentWillMount(){
+  //   this.setState({serverData: fakeServerData});
+  // }
+  constructor(){
+    super()
+    this.state = {
+      serverData: fakeServerData,
+      filterString: ''
+    };
   }
   render() {
     return (
@@ -123,11 +134,14 @@ class App extends Component {
           </div>
         }
 
-        <Filter/>
-        {this.state.serverData.user.playlists.map(playlist => 
-                  <Playlist playlist = {playlist} />)}
-        </div>
-        );
+        <Filter onInput = {text => this.setState({filterString: text})}/>
+        {this.state.serverData.user.playlists.filter( playlist =>
+          playlist.name.toLowerCase().includes(
+            this.state.filterString.toLowerCase())
+          ).map(playlist => 
+          <Playlist playlist = {playlist} />)}
+          </div>
+          );
   }
 }
 export default App;
